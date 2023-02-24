@@ -1,12 +1,16 @@
 import React from 'react';
-import { Auth } from './components/auth';
+import { useState } from 'react';
+import { Auth } from './components/Auth';
+import { auth } from './config/firebase';
+import Chat from './components/Chat';
+
+
 
 function App() {
+  const [user, setUser] = useState(auth?.currentUser);
   return (
     <div className="App">
-      <header className="App-header">
-        <Auth/>
-      </header>
+        {user ? <Chat/> : <Auth user={user} setUser={setUser}/>}
     </div>
   );
 }
