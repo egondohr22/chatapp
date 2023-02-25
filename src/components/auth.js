@@ -1,23 +1,29 @@
 import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithEmailAndPassword } from 'firebase/auth';
+import Cookies from 'universal-cookie';
 import { useState } from 'react';
 
-export const Auth = ({user, setUser}) => {
+const cookies = new Cookies();
+
+export const Auth = ( {setIsAuth} ) => {
     const [email, setEmail] = useState("");   
     const [password, setPassword] = useState("");    
     const createAccount = async () => {
         try {
-          await createUserWithEmailAndPassword(auth, email, password);
-          setUser(auth.currentUser);
-
+          const result = await createUserWithEmailAndPassword(auth, email, password);
+          console.log(result);
+          cookies.set("auth-token", result.user.refreshToken);
+          setIsAuth(cookies.get("auth-token"));
         } catch(err) {
             console.error(err);
         }
     };
     const googleSingIn = async () => {
         try {
-            await signInWithPopup(auth, googleProvider);
-            setUser(auth.currentUser);
+            const result = await signInWithPopup(auth, googleProvider);
+            cookies.set("auth-token", result.user.refreshToken);
+            setIsAuth(cookies.get("auth-token"));
+
           } catch(err) {
               console.error(err);
           }
@@ -25,17 +31,18 @@ export const Auth = ({user, setUser}) => {
     };
     const login = async () => {
         try {
-            await signInWithEmailAndPassword(auth, email, password);
-            setUser(auth.currentUser);
+            const result = await signInWithEmailAndPassword(auth, email, password);
+            cookies.set("auth-token", result.user.refreshToken);
+            setIsAuth(cookies.get("auth-token"));
         } catch(err) {
             console.error(err);
         }
     }
     const logout = async () => {
         try {
-            await signOut(auth);
-            setUser(auth.currentUser);
-
+            const result = await signOut(auth);
+            cookies.set("auth-token", result.user.refreshToken);
+            setIsAuth(cookies.get("auth-token"));
         } catch(err) {
             console.error(err);
         }
