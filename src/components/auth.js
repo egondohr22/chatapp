@@ -1,5 +1,5 @@
 import { auth, googleProvider } from '../config/firebase';
-import { createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import Cookies from 'universal-cookie';
 import { useState } from 'react';
 
@@ -38,15 +38,15 @@ export const Auth = ( {setIsAuth} ) => {
             console.error(err);
         }
     }
-    const logout = async () => {
-        try {
-            const result = await signOut(auth);
-            cookies.set("auth-token", result.user.refreshToken);
-            setIsAuth(cookies.get("auth-token"));
-        } catch(err) {
-            console.error(err);
-        }
-    }
+    // const logout = async () => {
+    //     try {
+    //         const result = await signOut(auth);
+    //         cookies.set("auth-token", result.user.refreshToken);
+    //         setIsAuth(cookies.get("auth-token"));
+    //     } catch(err) {
+    //         console.error(err);
+    //     }
+    // }
 
     return (
         <div>
@@ -63,7 +63,7 @@ export const Auth = ( {setIsAuth} ) => {
             <button onClick={createAccount}> Sign In </button>
             <button onClick={googleSingIn}>Sign in with Google</button>
             <button onClick={login}> Login </button>
-            <button onClick={logout}>Logout</button>
+            {/* <button onClick={logout}>Logout</button> */}
         </div>
     )
 }
