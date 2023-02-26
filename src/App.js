@@ -18,7 +18,7 @@ function App() {
     return (
       <div>
         { room? (
-          <Chat/>
+          <Chat setIsAuth={setIsAuth} room={room} setRoom={setRoom}/>
         ) : (
           <ChooseRoom setIsAuth={setIsAuth} setRoom={setRoom}/>
         )

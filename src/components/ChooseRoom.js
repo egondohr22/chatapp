@@ -20,8 +20,8 @@ const ChooseRoom = ( {setIsAuth, setRoom} ) => {
 };
   return (
     <div>
-        <label for="roomIn">Enter room name/id</label>
-        <input ref={inputRef}/>
+        <label htmlFor="roomIn">Enter room name/id</label>
+        <input id="roomIn" ref={inputRef}/>
         <button onClick={() => setRoom(inputRef.current.value)}>Enter</button>
         <button onClick={logout}>Logout</button>
     </div>
