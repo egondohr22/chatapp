@@ -2,6 +2,8 @@ import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import Cookies from 'universal-cookie';
 import { useState } from 'react';
+import '../styles/Auth.css';
+
 
 const cookies = new Cookies();
 
@@ -49,7 +51,7 @@ export const Auth = ( {setIsAuth} ) => {
     // }
 
     return (
-        <div>
+        <div className='auth'>
             <input 
                 type="email"
                 placeholder="Email..."
