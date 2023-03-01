@@ -54,9 +54,15 @@ const Chat = ( {setIsAuth, room, setRoom} ) => {
 
   return (
     <div className='chat-app'>
-      <div>
+      <div className='chat-headder'>
+        <h1> Room {room} </h1>
+      </div>
+      <div className='messages'>
         {messages.map((message) => (
-          <h4 key={message.id}>{message.content}</h4>
+          <div className='message' key={message.id}>
+            <span className='user'>{message.user}</span>
+            {message.content}
+          </div>
         ))}
       </div>
       <form onSubmit={handleSubmit} className='new-message-form'>
