@@ -25,18 +25,28 @@
     padding: 10px;
     margin-bottom: 10px;
   }
-  
+  .message-user {
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
   .message {
     display: flex;
     align-items: flex-start;
     margin-bottom: 10px;
   }
   
+  
  
   .user {
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-weight: lighter;
+    font-size: small;
     margin-right: 10px;
-    color: #333;
+    margin-left: 10px;
+    color: rgb(133, 133, 133);
   }
   
   .new-message-form {

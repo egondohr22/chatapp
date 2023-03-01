@@ -59,7 +59,7 @@ const Chat = ( {setIsAuth, room, setRoom} ) => {
       </div>
       <div className='messages'>
         {messages.map((message) => (
-          <div className='message' key={message.id}>
+          <div className={message.user == auth.currentUser.displayName ? "message-user" : "message"} key={message.id}>
             <span className='user'>{message.user}</span>
             {message.content}
           </div>
