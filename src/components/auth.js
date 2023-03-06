@@ -51,7 +51,9 @@ export const Auth = ( {setIsAuth} ) => {
     // }
 
     return (
-        <div className='auth'>
+        <div className='login-box'>
+            <h2>Login Page</h2>
+            <div>
             <input 
                 type="email"
                 placeholder="Email..."
@@ -62,10 +64,11 @@ export const Auth = ( {setIsAuth} ) => {
                 placeholder="Password..."
                 onChange={(e) => setPassword(e.target.value)}
             />
+            <span className='line'></span>
             <button onClick={createAccount}> Sign In </button>
             <button onClick={googleSingIn}>Sign in with Google</button>
             <button onClick={login}> Login </button>
-            {/* <button onClick={logout}>Logout</button> */}
+            </div>
         </div>
     )
 }
